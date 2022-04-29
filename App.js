@@ -1,36 +1,57 @@
 import { React, useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Button, View, TextInput, TouchableOpacity } from 'react-native';
 import CalculaRefri from './components/CalculoRefrigerante';
 import CalculaAgua from './components/CalculoAgua';
 import CalculaBolo from './components/CalculoBolo';
 import CalculaDoces from './components/CalculoDoce';
 import CalculaSalgados from './components/CalculoSalgado';
 
+
 export default function App() {
   const[qtConvidados, setQtConvidados] = useState();
-
+  function mostraTudo() {
+    return(
+      <View style={styles.containerresultados}>
+          <CalculaRefri qtConvidados={qtConvidados}/>
+          <CalculaAgua qtConvidados={qtConvidados}/>
+          <CalculaBolo qtConvidados={qtConvidados}/>
+          <CalculaDoces qtConvidados={qtConvidados}/>
+          <CalculaSalgados qtConvidados={qtConvidados}/>
+        </View>   
+    )
+        
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.nome}>DMR</Text>
       <br></br>
       <Text style={styles.titulo}>Calculalimentos</Text>
       <Text style={styles.textos}>Insira o número de convidados que estarão presentes na festa no campo abaixo:</Text>
-      <TextInput 
+
+      <Button
+        onPress={mostraTudo()}
+        style={styles.textos}
+        title="Calcular"
+        color="#841584"
+        >
+      </Button>
+      
+      <br></br>
+      <TextInput
             style={styles.input}
             keyboardType="numeric"
             value={qtConvidados}
             onChangeText={(texto)=>setQtConvidados(texto)}
           />
-        <View style={styles.containerresultados}>
-          <CalculaRefri qtConvidados={qtConvidados}/>
-          <CalculaAgua qtConvidados={qtConvidados}/>
-          <CalculaBolo qtConvidados={qtConvidados}/>
-          <CalculaDoces qtConvidados={qtConvidados}/>
-          <CalculaSalgados qtConvidados={qtConvidados}/>
-        </View>
+  
+
+
+        
     </View>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -64,6 +85,7 @@ const styles = StyleSheet.create({
   textos:{
     fontSize: 25,
     margin: 20,
+    fontFamily: 'fantasy'
   },
   input:{
     borderColor:'#EB4A42',
