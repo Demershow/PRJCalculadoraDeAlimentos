@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         marginRight: 20,
         padding: 4,
         textAlign: 'center',
-        backgroundColor: '#3E498A',
+        backgroundColor: '#EB4A42',
         color: '#fff',
     }
 });
