@@ -18,7 +18,7 @@ export default function App() {
           <CalculaDoces qtConvidados={qtConvidados}/>
           <CalculaSalgados qtConvidados={qtConvidados}/>
         </View>   
-    )
+    );
         
   }
   return (
