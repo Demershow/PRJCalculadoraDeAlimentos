@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import  React,{useState } from 'react';
 import { StyleSheet, Text, Button, View, TextInput, TouchableOpacity } from 'react-native';
 import CalculaRefri from './components/CalculoRefrigerante';
 import CalculaAgua from './components/CalculoAgua';
@@ -9,18 +9,14 @@ import CalculaSalgados from './components/CalculoSalgado';
 
 export default function App() {
   const[qtConvidados, setQtConvidados] = useState();
-  function mostraTudo() {
-    return(
-      <View style={styles.containerresultados}>
-          <CalculaRefri qtConvidados={qtConvidados}/>
-          <CalculaAgua qtConvidados={qtConvidados}/>
-          <CalculaBolo qtConvidados={qtConvidados}/>
-          <CalculaDoces qtConvidados={qtConvidados}/>
-          <CalculaSalgados qtConvidados={qtConvidados}/>
-        </View>   
-    );
-        
+  const[valor, setValor] = useState();
+
+  function results(){
+    setQtConvidados(valor);
+
+
   }
+  
   return (
     <View style={styles.container}>
       <Text style={styles.nome}>DMR</Text>
@@ -28,20 +24,20 @@ export default function App() {
       <Text style={styles.titulo}>Calculalimentos</Text>
       <Text style={styles.textos}>Insira o número de convidados que estarão presentes na festa no campo abaixo:</Text>
 
-      <Button
-        onPress={mostraTudo()}
+      <TouchableOpacity
+        onPress={results()}
         style={styles.textos}
         title="Calcular"
         color="#841584"
         >
-      </Button>
-      
+      </TouchableOpacity>
+
       <br></br>
       <TextInput
             style={styles.input}
             keyboardType="numeric"
             value={qtConvidados}
-            onChangeText={(texto)=>setQtConvidados(texto)}
+            onChangeText={(texto)=>setValor(texto)}
           />
   
 
